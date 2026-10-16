@@ -1,17 +1,17 @@
 import type { MetadataRoute } from "next";
 
-const siteUrl = "https://example.com";
-const routes = [
-  "",
-  "/our-world",
-  "/ts-01",
-  "/journey",
-  "/philosophy",
-  "/contact",
-];
-
 export default function sitemap(): MetadataRoute.Sitemap {
-  return routes.map((route) => ({
-    url: `${siteUrl}${route}`,
-  }));
+  const siteUrl = process.env.SITE_URL;
+  if (!siteUrl) return [];
+
+  let origin: URL;
+  try {
+    origin = new URL(siteUrl);
+  } catch {
+    return [];
+  }
+
+  if (origin.protocol !== "http:" && origin.protocol !== "https:") return [];
+
+  return [{ url: new URL("/", origin).toString() }];
 }

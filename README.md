@@ -1,6 +1,6 @@
 # TrueStride Equine
 
-Foundational project setup for the TrueStride Equine website. The planned routes are minimal entry points and do not yet contain website designs or features.
+Single-page TrueStride Equine brand website built with Next.js App Router. The homepage contains the full scrolling experience; legacy section URLs redirect to their matching homepage anchor.
 
 ## Stack
 
@@ -38,13 +38,18 @@ Use `npm run format` to apply Prettier formatting.
 
 ## Source directories
 
-- `src/app/`: Routes, root layout, metadata, and global CSS.
-- `src/components/`: Reserved for shared UI, layout, and section components.
-- `src/features/`: Reserved for page-specific modules.
+- `src/app/`: Homepage route, legacy section redirects, root layout, metadata, and global CSS.
+- `src/components/`: Shared layout and accessible media placeholder components.
+- `src/features/home/`: Homepage section composition and copy.
+- `src/features/contact/`: Contact form fields and local validation feedback.
 - `src/hooks/`, `src/lib/`, `src/config/`, `src/constants/`, `src/types/`, `src/data/`, and `src/styles/`: Reserved for shared hooks, utilities, configuration, constants, types, content data, and additional styles.
 - `public/`: Static assets organized by purpose.
 - `tests/`: Reserved for future tests.
 
-## Planned routes
+## Single-page sections
 
-`/`, `/our-world`, `/ts-01`, `/journey`, `/philosophy`, and `/contact`.
+`/` includes Hero, Our World, TS-01, The Journey, Philosophy, Contact, and the footer. Header and footer links use section anchors.
+
+`/our-world`, `/ts-01`, `/journey`, `/philosophy`, and `/contact` redirect to their corresponding section on `/`.
+
+Set `SITE_URL` to the deployed canonical origin to populate the sitemap and robots sitemap reference. The contact form validates fields in the browser but does not transmit or store enquiries until a delivery service is configured.
