@@ -1,12 +1,18 @@
-import { MediaPlaceholder } from "@/components/shared/media-placeholder";
+import Image from "next/image";
 
 export function HeroSection() {
   return (
     <section className="home-hero" id="home-hero" aria-labelledby="home-title">
-      <MediaPlaceholder
-        label="Approved bay thoroughbred photography to be added"
-        className="home-hero__media"
-      />
+      <div className="home-hero__media" aria-hidden="true">
+        <Image
+          src="/assets/Hero/hero-horse.png"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="home-hero__image"
+        />
+      </div>
       <div className="home-hero__content site-container">
         <p className="home-eyebrow">THE ART OF EQUINE TRAVEL</p>
         <h1 id="home-title">Every Journey Begins With Care.</h1>
@@ -18,7 +24,7 @@ export function HeroSection() {
           <a className="home-link home-link--dark" href="#our-world">
             Enter Our World <span aria-hidden="true">↓</span>
           </a>
-          <a className="home-link" href="#ts-01">
+          <a className="home-link home-link--light" href="#ts-01">
             Discover TS-01 <span aria-hidden="true">↗</span>
           </a>
         </div>

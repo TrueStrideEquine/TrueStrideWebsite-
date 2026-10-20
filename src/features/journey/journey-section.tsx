@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const journey = [
   {
     number: "01",
@@ -24,6 +26,14 @@ export function JourneySection() {
       id="journey"
       aria-labelledby="journey-title"
     >
+      <Image
+        src="/assets/OurJourney/our-journey-horse-trailer.png"
+        alt=""
+        aria-hidden="true"
+        fill
+        sizes="100vw"
+        className="home-journey__media"
+      />
       <div className="home-journey__heading">
         <p className="home-eyebrow">THE JOURNEY</p>
         <h2 id="journey-title">From Preparation to Arrival.</h2>

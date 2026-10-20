@@ -1,28 +1,31 @@
-import { MediaPlaceholder } from "@/components/shared/media-placeholder";
+import Image from "next/image";
 
 export function PhilosophySection() {
   return (
     <section
-      className="home-philosophy home-section"
+      className="home-philosophy"
       id="philosophy"
       aria-labelledby="philosophy-title"
     >
-      <div className="home-philosophy__media-wrap">
-        <MediaPlaceholder
-          label="Approved close up horse photography to be added"
+      <div className="home-philosophy__image-panel">
+        <Image
+          src="/assets/EveryHorseMatters/every-horse-matters.png"
+          alt=""
+          aria-hidden="true"
+          fill
+          sizes="(max-width: 760px) 100vw, 60vw"
           className="home-philosophy__media"
         />
       </div>
       <div className="home-philosophy__copy">
         <p className="home-eyebrow">OUR PHILOSOPHY</p>
-        <h2 id="philosophy-title">Care Is in Every Detail.</h2>
+        <h2 id="philosophy-title">Every Horse Matters.</h2>
         <p>
-          The smallest decisions shape the whole experience. We believe care
-          should be present in how a journey is imagined, prepared and made.
+          We believe that every horse is unique, valuable and deserves the
+          highest standard of care. Our mission is simple — to ensure their
+          journey is as safe, comfortable and stress-free as possible.
         </p>
-        <a className="home-text-link" href="#contact">
-          Continue the conversation <span aria-hidden="true">↗</span>
-        </a>
+        <p className="home-philosophy__signature">TrueStride Equine</p>
       </div>
     </section>
   );

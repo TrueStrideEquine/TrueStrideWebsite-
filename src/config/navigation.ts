@@ -1,8 +1,10 @@
 export const siteNavigation = [
   { label: "Our World", href: "#our-world" },
-  { label: "TS-01", href: "#ts-01" },
+  { label: "Our Purpose", href: "#our-purpose" },
+  { label: "THE MACHINE", href: "#ts-01" },
   { label: "The Journey", href: "#journey" },
-  { label: "Philosophy", href: "#philosophy" },
+  { label: "TrueStride Journey", href: "#truestride-journey" },
+  { label: "Our Philosophy", href: "#philosophy" },
   { label: "Contact", href: "#contact" },
 ] as const;
 
