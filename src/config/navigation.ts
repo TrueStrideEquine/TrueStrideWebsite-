@@ -5,7 +5,6 @@ export const siteNavigation = [
   { label: "The Journey", href: "#journey" },
   { label: "TrueStride Journey", href: "#truestride-journey" },
   { label: "Our Philosophy", href: "#philosophy" },
-  { label: "Contact", href: "#contact" },
 ] as const;
 
 export const contactCallToAction = {
