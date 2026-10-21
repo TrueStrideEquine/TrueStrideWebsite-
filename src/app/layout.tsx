@@ -28,6 +28,9 @@ export const metadata: Metadata = {
   },
   description:
     "Horse-first equine transportation shaped around thoughtful engineering and a more considered journey.",
+  verification: {
+    google: "hv5kn0cHa46ocXUsddKBfBCN5DfIXGej9hXq2waVToM",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
