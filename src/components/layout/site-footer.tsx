@@ -93,13 +93,11 @@ export function SiteFooter() {
             viewport={scrollViewport}
             transition={{ duration: 1.25, ease: scrollEase, delay: 0.3 }}
           >
-            {siteNavigation
-              .filter((item) => item.href !== contactCallToAction.href)
-              .map((item) => (
-                <a href={item.href} key={item.href}>
-                  {item.label}
-                </a>
-              ))}
+            {siteNavigation.map((item) => (
+              <a href={item.href} key={item.href}>
+                {item.label}
+              </a>
+            ))}
             <a href={contactCallToAction.href}>Enquire</a>
           </motion.nav>
         </div>
