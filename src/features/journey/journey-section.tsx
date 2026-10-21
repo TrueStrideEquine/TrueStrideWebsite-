@@ -1,4 +1,15 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
+import {
+  fadeUpIn,
+  fadeUpInitial,
+  scrollEase,
+  scrollViewport,
+  slideIn,
+  slideLeftInitial,
+} from "@/components/shared/scroll-motion";
 
 const journey = [
   {
@@ -35,21 +46,55 @@ export function JourneySection() {
         className="home-journey__media"
       />
       <div className="home-journey__heading">
-        <p className="home-eyebrow">THE JOURNEY</p>
-        <h2 id="journey-title">From Preparation to Arrival.</h2>
+        <motion.p
+          className="home-eyebrow"
+          initial={fadeUpInitial}
+          whileInView={fadeUpIn}
+          viewport={scrollViewport}
+          transition={{ duration: 1.2, ease: scrollEase, delay: 0.1 }}
+        >
+          THE JOURNEY
+        </motion.p>
+        <motion.h2
+          id="journey-title"
+          initial={fadeUpInitial}
+          whileInView={fadeUpIn}
+          viewport={scrollViewport}
+          transition={{ duration: 1.35, ease: scrollEase, delay: 0.25 }}
+        >
+          From Preparation to Arrival.
+        </motion.h2>
       </div>
       <div className="home-journey__steps">
-        {journey.map((step) => (
-          <article className="home-journey-step" key={step.number}>
+        {journey.map((step, index) => (
+          <motion.article
+            className="home-journey-step"
+            key={step.number}
+            initial={fadeUpInitial}
+            whileInView={fadeUpIn}
+            viewport={scrollViewport}
+            transition={{
+              duration: 1.2,
+              ease: scrollEase,
+              delay: index * 0.22 + 0.35,
+            }}
+          >
             <span className="home-journey-step__number">{step.number}</span>
             <h3>{step.title}</h3>
             <p>{step.description}</p>
-          </article>
+          </motion.article>
         ))}
       </div>
-      <a className="home-text-link" href="#contact">
+      <motion.a
+        className="home-text-link"
+        href="#contact"
+        initial={slideLeftInitial}
+        whileInView={slideIn}
+        viewport={scrollViewport}
+        transition={{ duration: 1.2, ease: scrollEase, delay: 0.75 }}
+      >
         Begin a conversation <span aria-hidden="true">↗</span>
-      </a>
+      </motion.a>
     </section>
   );
 }

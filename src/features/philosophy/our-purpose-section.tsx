@@ -1,4 +1,16 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
+import {
+  fadeUpIn,
+  fadeUpInitial,
+  scrollEase,
+  scrollViewport,
+  slideIn,
+  slideLeftInitial,
+  slideRightInitial,
+} from "@/components/shared/scroll-motion";
 
 export function OurPurposeSection() {
   return (
@@ -16,15 +28,43 @@ export function OurPurposeSection() {
         className="home-purpose__media"
       />
       <div className="home-purpose__copy">
-        <p className="home-eyebrow">OUR PURPOSE</p>
-        <h2 id="our-purpose-title">Care Is in Every Detail.</h2>
-        <p>
+        <motion.p
+          className="home-eyebrow"
+          initial={fadeUpInitial}
+          whileInView={fadeUpIn}
+          viewport={scrollViewport}
+          transition={{ duration: 1.2, ease: scrollEase, delay: 0.1 }}
+        >
+          OUR PURPOSE
+        </motion.p>
+        <motion.h2
+          id="our-purpose-title"
+          initial={fadeUpInitial}
+          whileInView={fadeUpIn}
+          viewport={scrollViewport}
+          transition={{ duration: 1.35, ease: scrollEase, delay: 0.25 }}
+        >
+          Care Is in Every Detail.
+        </motion.h2>
+        <motion.p
+          initial={fadeUpInitial}
+          whileInView={fadeUpIn}
+          viewport={scrollViewport}
+          transition={{ duration: 1.25, ease: scrollEase, delay: 0.4 }}
+        >
           The smallest decisions shape the whole experience. We believe care
           should be present in how a journey is imagined, prepared and made.
-        </p>
-        <a className="home-text-link" href="#contact">
+        </motion.p>
+        <motion.a
+          className="home-text-link"
+          href="#contact"
+          initial={slideLeftInitial}
+          whileInView={slideIn}
+          viewport={scrollViewport}
+          transition={{ duration: 1.2, ease: scrollEase, delay: 0.55 }}
+        >
           Continue the conversation <span aria-hidden="true">↗</span>
-        </a>
+        </motion.a>
       </div>
     </section>
   );

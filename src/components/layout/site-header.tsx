@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { contactCallToAction, siteNavigation } from "@/config/navigation";
@@ -15,17 +16,11 @@ export function SiteHeader() {
   useEffect(() => {
     if (!isHomePage) return;
 
-    const hero = document.getElementById("home-hero");
-    if (!hero) return;
+    const updateScrollState = () => setIsScrolled(window.scrollY > 8);
+    updateScrollState();
+    window.addEventListener("scroll", updateScrollState, { passive: true });
 
-    if (typeof IntersectionObserver === "undefined") return;
-
-    const observer = new IntersectionObserver(([entry]) => {
-      setIsScrolled(!entry.isIntersecting);
-    });
-    observer.observe(hero);
-
-    return () => observer.disconnect();
+    return () => window.removeEventListener("scroll", updateScrollState);
   }, [isHomePage]);
 
   useEffect(() => {
@@ -80,8 +75,18 @@ export function SiteHeader() {
           aria-label="TrueStride Equine home"
           onClick={() => setIsMenuOpen(false)}
         >
-          <span className="site-wordmark__name">TRUESTRIDE</span>
-          <span className="site-wordmark__descriptor">EQUINE</span>
+          <Image
+            className="site-wordmark__logo"
+            src="/assets/logo/logo.png"
+            alt=""
+            width={1774}
+            height={887}
+            priority
+          />
+          <span className="site-wordmark__text">
+            <span className="site-wordmark__name">TRUESTRIDE</span>
+            <span className="site-wordmark__descriptor">EQUINE</span>
+          </span>
         </Link>
 
         <nav className="site-header__desktop-nav" aria-label="Main navigation">
@@ -122,7 +127,12 @@ export function SiteHeader() {
       <div
         className="site-header__mobile-panel"
         id="mobile-navigation"
-        hidden={!isMenuOpen}
+        data-open={isMenuOpen}
+        aria-hidden={!isMenuOpen}
+        inert={!isMenuOpen}
+        onClick={(event) => {
+          if (event.target === event.currentTarget) setIsMenuOpen(false);
+        }}
       >
         <nav className="site-header__mobile-nav" aria-label="Mobile navigation">
           {siteNavigation.map((item) => (

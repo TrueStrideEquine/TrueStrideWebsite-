@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { motion } from "framer-motion";
 
 export function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -21,7 +22,7 @@ export function ContactForm() {
   }
 
   return (
-    <form className="contact-form" ref={formRef}>
+    <motion.form className="contact-form" ref={formRef}>
       <div className="contact-form__row">
         <div className="contact-field">
           <label htmlFor="contact-name">Name</label>
@@ -50,9 +51,15 @@ export function ContactForm() {
             <option disabled value="">
               Select an enquiry type
             </option>
+            <option value="horse-transportation">
+              Horse transportation enquiry
+            </option>
+            <option value="stud-farm">Stud farm or equestrian club</option>
+            <option value="business-partnership">Business partnership</option>
+            <option value="ts-01-collaboration">
+              TS-01 design or collaboration
+            </option>
             <option value="general">General enquiry</option>
-            <option value="ts-01">TS-01</option>
-            <option value="journey">The journey</option>
           </select>
         </div>
         <div className="contact-field">
@@ -72,12 +79,8 @@ export function ContactForm() {
         type="button"
         onClick={handleCheck}
       >
-        Check enquiry <span aria-hidden="true">↗</span>
+        Submit Enquiry <span aria-hidden="true">↗</span>
       </button>
-      <p className="contact-form__delivery-note">
-        This form currently checks the required fields in your browser. It does
-        not send or store your information.
-      </p>
-    </form>
+    </motion.form>
   );
 }

@@ -1,4 +1,17 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
+import {
+  fadeUpIn,
+  fadeUpInitial,
+  scaleIn,
+  scaleInitial,
+  scrollEase,
+  scrollViewport,
+  slideIn,
+  slideLeftInitial,
+} from "@/components/shared/scroll-motion";
 
 export function HeroSection() {
   return (
@@ -14,24 +27,56 @@ export function HeroSection() {
         />
       </div>
       <div className="home-hero__content site-container">
-        <p className="home-eyebrow">THE ART OF EQUINE TRAVEL</p>
-        <h1 id="home-title">Every Journey Begins With Care.</h1>
-        <p>
-          Thoughtfully engineered transport. A calmer, more considered journey
-          for the horse at its heart.
-        </p>
+        <motion.p
+          className="home-eyebrow"
+          initial={fadeUpInitial}
+          whileInView={fadeUpIn}
+          viewport={scrollViewport}
+          transition={{ duration: 1.2, ease: scrollEase, delay: 0.15 }}
+        >
+          THE ART OF EQUINE TRAVEL
+        </motion.p>
+        <motion.h1
+          id="home-title"
+          initial={fadeUpInitial}
+          whileInView={fadeUpIn}
+          viewport={scrollViewport}
+          transition={{ duration: 1.35, ease: scrollEase, delay: 0.3 }}
+        >
+          <span>Every Journey</span>
+          <span>Begins With Care.</span>
+        </motion.h1>
+        <motion.p
+          initial={fadeUpInitial}
+          whileInView={fadeUpIn}
+          viewport={scrollViewport}
+          transition={{ duration: 1.25, ease: scrollEase, delay: 0.45 }}
+        >
+          Designed around the horse, with comfort and care at every mile.
+        </motion.p>
         <div className="home-actions">
-          <a className="home-link home-link--dark" href="#our-world">
+          <motion.a
+            className="home-link home-link--dark"
+            href="#our-world"
+            initial={scaleInitial}
+            whileInView={scaleIn}
+            viewport={scrollViewport}
+            transition={{ duration: 1.2, ease: scrollEase, delay: 0.6 }}
+          >
             Enter Our World <span aria-hidden="true">↓</span>
-          </a>
-          <a className="home-link home-link--light" href="#ts-01">
+          </motion.a>
+          <motion.a
+            className="home-link home-link--light"
+            href="#ts-01"
+            initial={slideLeftInitial}
+            whileInView={slideIn}
+            viewport={scrollViewport}
+            transition={{ duration: 1.2, ease: scrollEase, delay: 0.75 }}
+          >
             Discover TS-01 <span aria-hidden="true">↗</span>
-          </a>
+          </motion.a>
         </div>
       </div>
-      <span className="home-hero__index" aria-hidden="true">
-        TRUESTRIDE EQUINE · 01 / 08
-      </span>
     </section>
   );
 }
