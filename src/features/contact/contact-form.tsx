@@ -71,6 +71,21 @@ export function ContactForm() {
       </div>
       <div className="contact-form__row">
         <div className="contact-field">
+          <label htmlFor="contact-phone">Phone</label>
+          <input
+            autoComplete="tel"
+            id="contact-phone"
+            inputMode="tel"
+            maxLength={13}
+            name="phone"
+            pattern="\\+91[6-9][0-9]{9}"
+            placeholder="+919876543210"
+            title="Enter an Indian mobile number starting with +91, followed by 10 digits."
+            type="tel"
+            required
+          />
+        </div>
+        <div className="contact-field">
           <label htmlFor="contact-enquiry-type">Enquiry type</label>
           <select
             id="contact-enquiry-type"
@@ -92,10 +107,10 @@ export function ContactForm() {
             <option value="general">General enquiry</option>
           </select>
         </div>
-        <div className="contact-field">
-          <label htmlFor="contact-subject">Subject</label>
-          <input id="contact-subject" name="subject" required />
-        </div>
+      </div>
+      <div className="contact-field">
+        <label htmlFor="contact-subject">Subject</label>
+        <input id="contact-subject" name="subject" required />
       </div>
       <div className="contact-field">
         <label htmlFor="contact-message">Message</label>
