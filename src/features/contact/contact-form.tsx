@@ -1,28 +1,58 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
 
+const WEB3FORMS_ACCESS_KEY = "4e0e9185-8fed-4499-8268-126c8fb4f1e5";
+
 export function ContactForm() {
-  const formRef = useRef<HTMLFormElement>(null);
   const [notice, setNotice] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  function handleCheck() {
-    const form = formRef.current;
-    if (!form) return;
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setIsSubmitting(true);
+    setNotice("Sending your enquiry…");
 
-    if (!form.reportValidity()) {
-      setNotice("Please complete the required fields before continuing.");
-      return;
+    const form = event.currentTarget;
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: new FormData(form),
+      });
+      const result: { success?: boolean } = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error("Web3Forms submission failed");
+      }
+
+      form.reset();
+      setNotice("Thank you. Your enquiry has been sent successfully.");
+    } catch {
+      setNotice(
+        "We couldn’t send your enquiry. Please try again or email equinetruestride@gmail.com.",
+      );
+    } finally {
+      setIsSubmitting(false);
     }
-
-    setNotice(
-      "Your message has not been sent. Enquiry delivery is not connected yet.",
-    );
   }
 
   return (
-    <motion.form className="contact-form" ref={formRef}>
+    <motion.form className="contact-form" onSubmit={handleSubmit}>
+      <input
+        name="access_key"
+        type="hidden"
+        value={WEB3FORMS_ACCESS_KEY}
+      />
+      <input
+        aria-hidden="true"
+        autoComplete="off"
+        name="botcheck"
+        tabIndex={-1}
+        type="checkbox"
+        style={{ display: "none" }}
+      />
       <div className="contact-form__row">
         <div className="contact-field">
           <label htmlFor="contact-name">Name</label>
@@ -76,10 +106,11 @@ export function ContactForm() {
       </p>
       <button
         className="home-link home-link--light"
-        type="button"
-        onClick={handleCheck}
+        type="submit"
+        disabled={isSubmitting}
       >
-        Submit Enquiry <span aria-hidden="true">↗</span>
+        {isSubmitting ? "Sending…" : "Submit Enquiry"}{" "}
+        <span aria-hidden="true">↗</span>
       </button>
     </motion.form>
   );
