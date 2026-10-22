@@ -79,7 +79,7 @@ export function ContactForm() {
             maxLength={13}
             name="phone"
             pattern="\\+91[6-9][0-9]{9}"
-            placeholder="+919876543210"
+            placeholder="+91XXXXXXXXXX"
             title="Enter an Indian mobile number starting with +91, followed by 10 digits."
             type="tel"
             required
