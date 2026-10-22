@@ -1430,9 +1430,23 @@ a {
 }
 
 .contact-field label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
   color: var(--ts-charcoal);
   font-size: 0.78rem;
   font-weight: 500;
+}
+
+.contact-field__icon {
+  width: 0.9rem;
+  height: 0.9rem;
+  flex: 0 0 auto;
+  color: currentColor;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .contact-field input,
