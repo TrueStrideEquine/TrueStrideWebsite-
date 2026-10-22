@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     template: "%s | TrueStride Equine",
   },
   description:
-    "Horse-first equine transportation shaped around thoughtful engineering and a more considered journey.",
+    "TrueStride Equine offers horse-first transport in India, thoughtfully engineered for equine comfort, attentive care and a calmer journey.",
   verification: {
     google: "hv5kn0cHa46ocXUsddKBfBCN5DfIXGej9hXq2waVToM",
   },
