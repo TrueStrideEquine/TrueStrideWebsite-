@@ -137,9 +137,9 @@ export function ContactForm() {
             inputMode="tel"
             maxLength={13}
             name="phone"
-            pattern="\\+91[6-9][0-9]{9}"
+            pattern="(?:\+91)?[6-9][0-9]{9}"
             placeholder="+91XXXXXXXXXX"
-            title="Enter an Indian mobile number starting with +91, followed by 10 digits."
+            title="Enter a 10-digit Indian mobile number, with or without the +91 prefix."
             type="tel"
             required
           />
